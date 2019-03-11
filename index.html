@@ -15,15 +15,18 @@
         body {
             font: 14px/1.6'Avenir', Helvetica, Arial, sans-serif;
         }
+        
         i {
             font-size: 12px;
             clear: both;
             font-style: normal;
             display: block;
         }
+        
         h2 {
             margin: 10px
         }
+        
         #app {
             display: flex;
             flex-flow: column wrap;
@@ -32,6 +35,7 @@
             justify-content: flex-start;
             align-content: flex-start;
         }
+        
         #app>div {
             position: relative;
             width: 200px;
@@ -40,6 +44,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+        
         textarea {
             display: block;
             width: 200px;
@@ -48,6 +53,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+        
         button {
             padding: 0;
             cursor: pointer;
@@ -55,6 +61,7 @@
             border: 0;
             -webkit-appearance: none;
         }
+        
         .button {
             display: block;
             box-sizing: content-box;
@@ -66,6 +73,7 @@
             cursor: pointer;
             clear: both;
         }
+        
         .close {
             position: absolute;
             top: 7px;
@@ -76,6 +84,7 @@
             margin: 0 2px 0 0;
             text-shadow: 0 1px 0 #fff;
         }
+        
         .close:hover,
         .close:focus {
             text-decoration: none;
@@ -85,7 +94,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" :style="{ 'height': `${sectionHeight}px` }">
 
         <h2>{{title}}</h2>
 
@@ -95,12 +104,10 @@
 
         <div v-for="(note, index) in notes">
             <button class="close" @click="removeNote(index)">&times;</button>
-            <i>{{note.date}}</i>
-            {{note.text}}
+            <i>{{note.date}}</i> {{note.text}}
         </div>
     </div>
     <script>
-        document.getElementById("app").style.height = document.documentElement.clientHeight + "px";
         var app = new Vue({
             el: '#app',
             data: {
@@ -117,7 +124,9 @@
             methods: {
                 addNote() {
                     let {
-                        text, title, color
+                        text,
+                        title,
+                        color
                     } = this.note
                     this.notes.push({
                         text,
@@ -141,6 +150,12 @@
                     },
                     deep: true,
                 },
+            },
+            computed: {
+                sectionHeight() {
+                    const sectionHeightDOM = document.documentElement.clientHeight;
+                    return sectionHeightDOM;
+                }
             }
         })
     </script>
