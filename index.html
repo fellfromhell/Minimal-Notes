@@ -102,7 +102,7 @@
 
         <button class="button" @click="addNote">Submit</button>
 
-        <div v-for="(note, index) in notes">
+        <div v-for="(note, index) in notes" :key="index">
             <button class="close" @click="removeNote(index)">&times;</button>
             <i>{{note.date}}</i> {{note.text}}
         </div>
