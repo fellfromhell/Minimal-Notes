@@ -7,7 +7,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-    <title>Minimal Notes</title>
+    <title>Certificate of Insurance</title>
 
     <link rel="icon" sizes="192x192" href="icon.png">
 
@@ -98,7 +98,7 @@
 
         <h2>{{title}}</h2>
 
-        <textarea autofocus placeholder="insert your note .." v-model="note.text"></textarea>
+        <textarea autofocus placeholder="Add your vendor .." v-model="note.text"></textarea>
 
         <button class="button" @click="addNote">Submit</button>
 
@@ -111,13 +111,13 @@
         var app = new Vue({
             el: '#app',
             data: {
-                title: 'Minimal Notes',
+                title: 'Certificates of Insurance',
                 note: {
                     text: '',
                     date: ''
                 },
                 notes: [{
-                    text: 'Minimal Notes',
+                    text: 'Vendor',
                     date: new Date(Date.now()).toLocaleString()
                 }]
             },
